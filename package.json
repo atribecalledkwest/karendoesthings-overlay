@@ -1,0 +1,60 @@
+{
+  "name": "karendoesthings-overlay",
+  "version": "0.0.1",
+  "description": "The new overlay for my stream",
+  "homepage": "",
+  "author": {
+    "name": "Karen West",
+    "email": "atribecalledkwest.97@gmail.com",
+    "url": "atribecalledkwest.github.io"
+  },
+  "dependencies": {
+    "streamtip": "^1.0.1",
+    "tmi.js": "^1.2.1",
+    "request": "^2.81.0"
+  },
+  "nodecg": {
+    "compatibleRange": "0.8.9",
+    "dashboardPanels": [
+      {
+        "name": "notify-panel",
+        "title": "Notify Panel",
+        "width": 3,
+        "file": "notify-panel/index.html"
+      },
+      {
+        "name": "overlay-text",
+        "title": "Overlay Text",
+        "width": 2,
+        "file": "overlay-text/index.html"
+      },
+      {
+        "name": "lastfm-np",
+        "title": "LastFM Now Playing",
+        "width": 3,
+        "file": "lastfm-np/index.html"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "index.html",
+        "width": 1280,
+        "height": 720
+      }
+    ],
+    "soundCues": [
+        {
+            "name": "slide",
+            "assignable": false,
+            "defaultFile": "sounds/slide.ogg"
+        },
+        {
+            "name": "success",
+            "assignable": false,
+            "defaultFile": "sounds/success.ogg"
+        }
+    ]
+  },
+  "repository": "https://github.com/atribecalledkwest/karendoesthings-overlay.git",
+  "private": true
+}
