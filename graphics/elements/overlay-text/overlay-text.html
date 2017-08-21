@@ -1,0 +1,37 @@
+<dom-module id="overlay-text">
+    <template>
+        <style>
+            :host {
+                position: absolute;
+                display: block;
+            }
+            .overlay-text {
+                font-size: 42px;
+                color: #ffffff;
+                font-weight: bold;
+                padding: 0px;
+                /*position: absolute;
+                left: 10px;
+                top: 0px;*/
+            }
+            #overlayContent {
+                z-index: 2;
+            }
+            #overlayBorder {
+                -webkit-text-stroke: 5px #6495ED;
+                z-index: 1;
+            }
+            .fixed-text {
+                position: fixed;
+                left: 10px;
+                bottom: 10px;
+            }
+        </style>
+        <div class="overlay-text">
+            <span class="fixed-text" id="overlayContent">{{ current }}</span>
+            <span class="fixed-text border" id="overlayBorder">{{ current }}</span>
+        </div>
+    </template>
+</dom-module>
+
+<script type="text/javascript" src="overlay-text.js"></script>

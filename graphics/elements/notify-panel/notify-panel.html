@@ -1,0 +1,31 @@
+<dom-module id="notify-panel">
+    <template>
+        <style>
+            :host {
+                position: absolute;
+                display: block;
+            }
+            #panel {
+                position: absolute;
+                top: -80px;
+                -webkit-box-align: center;
+                left: 250px;
+                width: 780px;
+                height: 80px;
+                background: url(img/notify-panel.png);
+                line-height: 80px;
+                text-align: center;
+                font-size: 46px;
+                color: #ffffff;
+                font-weight: bold;
+                text-shadow: 0px 0px 8px rgba(10, 10, 10, 0.6);
+            }
+        </style>
+        <div id="panel">
+            <span id="paneltext">{{ text }}</span>
+        </div>
+    </template>
+</dom-module>
+
+<script type="text/javascript" src="../../globals.js"></script>
+<script type="text/javascript" src="notify-panel.js"></script>

@@ -1,0 +1,107 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+
+    "properties": {
+        "use": {
+            "type": "object",
+            "properties": {
+                "irc": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "streamtips": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "twitch": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "lastfm": {
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": ["irc", "streamtips", "twitch", "lastfm"]
+        },
+        "irc": {
+            "type": "object",
+            "properties": {
+                "connect": {
+                    "type": "object",
+                    "properties": {
+                        "reconnect": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    }
+                },
+                "identity": {
+                    "type": "object",
+                    "properties": {
+                        "username": {
+                            "type": "string",
+                            "default": "yourtwitchusername"
+                        },
+                        "password": {
+                            "type": "string",
+                            "default": "oauth:yourtwitchoauthtoken"
+                        }
+                    },
+                    "required": ["username", "password"]
+                },
+                "channels": {
+                    "type": "array",
+                    "default": ["#yourtwitchusername"]
+                }
+            }
+        },
+        "streamtips": {
+            "type": "object",
+            "properties": {
+                "clientid": {
+                    "type": "string",
+                    "default": "yourstreamtipsclientid"
+                },
+                "accesstoken": {
+                    "type": "string",
+                    "default": "yourstreamtipsaccesstoken"
+                }
+            },
+            "required": ["clientid", "accesstoken"]
+        },
+        "twitch": {
+            "type": "object",
+            "properties": {
+                "userid": {
+                    "type": "number",
+                    "default": 1337
+                },
+                "clientid": {
+                    "type": "string",
+                    "default": "yourtwitchclientid"
+                }
+            },
+            "required": ["userid", "clientid"]
+        },
+        "lastfm": {
+            "type": "object",
+            "properties": {
+                "apikey": {
+                    "type": "string",
+                    "default": "yourlastfmapikey"
+                },
+                "sharedsecret": {
+                    "type": "string",
+                    "default": "yourlastfmsharedsecret"
+                },
+                "target": {
+                    "type": "string",
+                    "default": "targetlastfmaccount"
+                }
+            },
+            "required": ["apikey", "sharedsecret", "target"]
+        }
+    }
+}
