@@ -12,6 +12,33 @@
     };
 
 
+    let options = {
+        "enabled": {},
+        "sound": {}
+    };
+    let replicants = {};
+    for(let i in type_replicants) {
+        let name = type_replicants[i],
+            rep = nodecg.Replicant(name, { defaultValue: true });
+        // Just set a default here because
+        options.enabled[i] = true; 
+        replicants[name] = rep;
+        rep.on("change", function(newVal) {
+            if(nodecg.bundleConfig.debug) nodecg.log.info(type_replicants[i], "changed:", newVal);
+            options.sound[i] = newVal;
+        });
+    }
+    for(let i in type_sound_replicants) {
+        let name = type_sound_replicants[i],
+            rep = nodecg.Replicant(name);
+        options.sound[i] = true; 
+        replicants[name] = rep;
+        rep.on("change", function(newVal) {
+            if(nodecg.bundleConfig.debug) nodecg.log.info(type_sound_replicants[i], "changed:", newVal);
+            options.sound[i] = newVal;
+        });
+    }
+
     Polymer({
         is: "notify-panel",
         properties: {
@@ -21,7 +48,7 @@
             },
             tl: {
                 type: Object,
-                value: new TimelineMax()
+                value: new TimelineMax({ autoRemoveChildren: true })
             }
         },
         popup: function popup(type, user, amount) {
@@ -31,10 +58,7 @@
                 throw new Error(`Type of ${type} has not been implemented`);
             }
 
-            const reptoggle = nodecg.Replicant(type_replicants[type], { defaultValue: true }),
-                repsoundtoggle = nodecg.Replicant(type_sound_replicants[type], { defaultValue: true });
-
-            if(typeof reptoggle.value !== "undefined" && !reptoggle.value) {
+            if(type in options.enabled && !options.enabled[type]) {
                 return;
             }
 
@@ -42,25 +66,28 @@
                 throw new Error(`New ${type} from user ${user} doesn't have amount go with it`);
             }
 
-            this.tl.add(function() {
-                let text = "";
-                if(type === "follow") {
-                    text = "New follower!";
-                } else if(type === "bits") {
-                    text = amount + "x bits!"; 
-                } else if(type === "donation") {
-                    text = amount + " donation!";
-                } else if(type === "subscription") {
-                    if(typeof amount !== "undefined" && amount > 1) {
-                        text = amount + "x resub!";
-                    } else {
-                        text = "New subscription!";
-                    }
-                }
-                self.text = text;
-            }, 0.01).add(TweenMax.to(self.$.panel, 0.75, {
+            this.tl.add(TweenMax.to({}, 0.01, {
                 onStart: function() {
-                    if(typeof repsoundtoggle.value !== "undefined" && repsoundtoggle.value) {
+                    let text = "";
+                    if(type === "follow") {
+                        text = "New follower!";
+                    } else if(type === "bits") {
+                        text = amount + "x bits!"; 
+                    } else if(type === "donation") {
+                        text = amount + " donation!";
+                    } else if(type === "subscription") {
+                        if(typeof amount !== "undefined" && amount > 1) {
+                            text = amount + "x resub!";
+                        } else {
+                            text = "New subscription!";
+                        }
+                    }
+                    self.$.paneltext.innerText = text;
+                }
+            })).add(TweenMax.to(self.$.panel, 0.75, {
+                onStart: function() {
+                    nodecg.log.info(type, type in options.sound, options.sound[type]);
+                    if(type in options.sound && options.sound[type]) {
                         nodecg.playSound("success");
                     }
                 },
@@ -68,15 +95,16 @@
                 ease: Power1.easeInOut
             })).add(TweenMax.to({}, 3, {
             })).add(TweenMax.to(self.$.paneltext, 0.25, {
-                opacity: 0
-            })).add(function() {
-                self.text = truncate(user);
-            }).add(TweenMax.to(self.$.paneltext, 0.25, {
+                opacity: 0,
+                onComplete: function() {
+                    self.$.paneltext.innerText = truncate(user);
+                }
+            })).add(TweenMax.to(self.$.paneltext, 0.25, {
                 opacity: 1
             })).add(TweenMax.to({}, 3, {
             })).add(TweenMax.to(self.$.panel, 0.75, {
                 onStart: function() {
-                    if(typeof repsoundtoggle.value !== "undefined" && repsoundtoggle.value) {
+                    if(type in options.sound && options.sound[type]) {
                         nodecg.playSound("slide");
                     }
                 },
@@ -87,15 +115,17 @@
         }
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
+    let setup = function setup() {
         if(!nodecg.bundleConfig) {
             return;
         }
-        let panel = document.querySelector("nofiy-panel");
+        let panel = document.querySelector("notify-panel");
 
         // Follower listener is separate from other twitch stuff because loltwitch.
-        if(nodecg.bundleConfig.use.twitch) {
-            nodecg.listenFor("follow", "karendoesthings", function(content) {
+        if(nodecg.bundleConfig.use.twitch || nodecg.bundleConfig.debug) {
+            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up follow listener");
+            nodecg.listenFor("follow", function(content) {
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Got follow:", content.user);
                 if(typeof content.user.display_name === "string") {
                     panel.popup("follow", content.user.display_name);
                 } else {
@@ -104,13 +134,26 @@
             });
         }
         // IRC allows us to listen to subscription and bit events.
-        if(nodecg.bundleConfig.use.irc) {
-            nodecg.listenFor("bits", "karendoesthings", function(content) {
-                panel.pupup("bits", content.username, content.bits);
+        if(nodecg.bundleConfig.use.irc || nodecg.bundleConfig.debug) {
+            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up bits and subscription listener");
+            nodecg.listenFor("bits", function(content) {
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Got bits:", content.username, content.bits);
+                panel.popup("bits", content.username, content.bits);
             });
-            nodecg.listenFor("subscription", "karendoesthings", function(content) {
+            nodecg.listenFor("subscription", function(content) {
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Got subscription:", content.username, content.months);
                 panel.popup("subscription", content.username, content.months);
             });
         }
-    });
+        // Donations are processed seperately through StreamTip
+        if(nodecg.bundleConfig.use.donations || nodecg.bundleConfig.debug) {
+            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up donation listener");
+            nodecg.listenFor("donation", function(content) {
+                let amountstr = `${content.currencySymbol}${content.amount}`;
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Got dontion:", content.username, amountstr);
+                panel.popup("donation", content.username, amountstr);
+            });
+        }
+    };
+    setup();
 })();

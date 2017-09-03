@@ -1,8 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="import" href="../../components/paper-checkbox/paper-checkbox.html" />
+        <link rel="import" href="../../components/paper-button/paper-button.html" />
+        <link rel="import" href="../../components/paper-styles/paper-styles.html" />
+        <style>
+            paper-button {
+                display: block;
+                text-align: center;
+                background-color: var(--paper-blue-500);
+                color: white;
+                margin-top: 2px;
+                margin-bottom: 6px;
+            }
+            paper-button[disabled] {
+                background-color: var(--paper-grey-500);
+            }
+            div {
+                padding: 3px;
+            }
+            .title {
+                font-size: 18px;
+            }
+            .current {
+                font-size: 16px;
+            }
+            #artist, #song {
+                font-style: italic;
+                font-weight: 300;
+            }
+        </style>
+        <script type="text/javascript" src="lastfm-np.js"></script>
     </head>
-
     <body>
+        <div id="nowplaying">
+            <div class="title">Now Playing:</div>
+            <div class="current"><span class="nowplaying" id="artist">Test</span> - <span class="nowplaying" id="song">Test</span></div>
+        </div>
+        <div id="enabled">
+            <paper-checkbox id="enablenowplaying">Enable now playing popup</paper-checkbox>
+        </div>
+        <div id="tests">
+            <paper-button id="test" raised>Test</paper-button>
+        </div>
     </body>
 </html>

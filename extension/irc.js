@@ -1,4 +1,5 @@
 (function() {
+    "use strict";
     const chat = require("tmi.js");
 
     module.exports = function(nodecg) {

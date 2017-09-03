@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="import" href="../../components/paper-button/paper-button.html" />
+        <link rel="import" href="../../components/paper-input/paper-input.html" />
+        <link rel="import" href="../../components/paper-styles/paper-styles.html" />
+
+        <style>
+            paper-button {
+                display: block;
+                text-align: center;
+                background-color: var(--paper-blue-500);
+                color: white;
+                margin-top: 2px;
+                margin-bottom: 6px;
+            }
+            paper-button[disabled] {
+                background-color: var(--paper-grey-500);
+            }
+        </style>
+        <script type="text/javascript" src="overlay-text.js"></script>
     </head>
 
     <body>
+        <paper-input id="input" label="Overlay text" always-float-label></paper-input>
+        <paper-button id="take" raised>Take</paper-button>
     </body>
 </html>

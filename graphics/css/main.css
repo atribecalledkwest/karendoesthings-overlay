@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,400,700&subset=latin-ext');
+@import url('./colors.css');
 
 body {
     padding: 0px;
     margin: 0px;
+    overflow: hidden;
 }
 
 #container {
@@ -12,7 +14,6 @@ body {
     height: 720px;
     min-height: 720px;
     max-width: 720px;
-    background-color: #2e2e2e;
     font-family: 'Oswald', 'Helvetica', sans-serif;
     font-weight: bold;
 }

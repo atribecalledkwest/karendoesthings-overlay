@@ -15,7 +15,9 @@
             api_key: nodecg.bundleConfig.lastfm.apikey,
             secret: nodecg.bundleConfig.lastfm.sharedsecret
         });
-        const trackstream = lastfm.stream(nodecg.bundleConfig.lastfm.targetaccount);
+        const trackstream = lastfm.stream(nodecg.bundleConfig.lastfm.target);
+
+        let nprep = nodecg.Replicant("nowplaying");
 
         trackstream.on("nowPlaying", function(track) {
             let nowplaying = {
@@ -25,20 +27,20 @@
                 cover: track.image.pop()["#text"]
             };
             // Filter out non-nowplaying songs
-            if(track.hasOwnProperty("@attr") || track["@attr"].hasOwnProperty("nowplaying") || track["@attr"].nowplaying !== true) {
+            if(!track.hasOwnProperty("@attr") || !track["@attr"].hasOwnProperty("nowplaying") || track["@attr"].nowplaying !== "true") {
                 return;
             }
-            let nprep = nodecg.Replicant("nowplaying");
             // Filters out potential duplicates
-            if(nprep.song === nowplaying.song && nprep.artist === nowplaying.artist) {
+            if(nprep.value["song"] === nowplaying.song && nprep.value["artist"] === nowplaying.artist) {
                 return;
             }
             nprep.value = nowplaying;
-            nodecg.sendMessage("nowplaying", track);
+            if(nodecg.bundleConfig.debug) nodecg.log.info("Now playing:", nowplaying.artist, "-", nowplaying.song);
+            nodecg.sendMessage("nowplaying", nowplaying);
         });
 
-        trackstream.on("error", function() {
-            return;
+        trackstream.on("error", function(e) {
+            if(nodecg.bundleConfig.debug) nodecg.log.error("Caught error:", e);
         });
 
         trackstream.start();

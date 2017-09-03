@@ -4,6 +4,7 @@
         "gsap": "^1.20.2",
         "paper-button": "^2.0.0",
         "paper-input": "^2.0.1",
-        "paper-checkbox": "^2.0.0"
+        "paper-checkbox": "^2.0.0",
+        "paper-styles": "^2.0.0"
     }
 }

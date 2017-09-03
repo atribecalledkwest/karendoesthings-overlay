@@ -1,0 +1,36 @@
+<dom-module id="background-layer">
+    <template>
+        <style type="text/css">
+            :host {
+                position: absolute;
+                display: block;
+                overflow: hidden;
+            }
+            .background {
+                position: static;
+                z-index: -10;
+                width: 1280px;
+                height: 720px;
+                margin: 0px;
+                overflow: hidden;
+                background-image: url(../../img/bg-wide2.png);
+                animation:100s scroll infinite linear;
+                -webkit-mask-image: none;
+            }
+            #foreground {
+                z-index: -9;
+            }
+            @keyframes scroll{
+                100%{
+                    background-position: -3000px 0px;
+                }
+            }
+        </style>
+        <div class="container" id="bgcontainer">
+            <div class="background" id="plate"></div>
+            <div class="background" id="placeholder"></div>
+        </div>
+    </template>
+</dom-module>
+
+<script type="text/javascript" src="background.js"></script>

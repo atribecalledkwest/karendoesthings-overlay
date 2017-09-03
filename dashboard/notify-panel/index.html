@@ -1,8 +1,54 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="import" href="../../components/paper-checkbox/paper-checkbox.html" />
+        <link rel="import" href="../../components/paper-button/paper-button.html" />
+        <link rel="import" href="../../components/paper-styles/paper-styles.html" />
+        <style>
+            .title {
+                padding-top: 2px;
+                padding-bottom: 2px;
+                font-size: 18px;
+            }
+            paper-button {
+                display: block;
+                text-align: center;
+                background-color: var(--paper-blue-500);
+                color: white;
+                margin-top: 2px;
+                margin-bottom: 6px;
+            }
+            paper-checkbox {
+                display: block;
+            }
+            paper-button[disabled] {
+                background-color: var(--paper-grey-500);
+            }
+        </style>
+        <script type="text/javascript" src="notify-panel.js"></script>
     </head>
 
     <body>
+        <div id="notifications">
+            <div class="title">Notifications</div>
+            <paper-checkbox id="follower-toggle" data-triggers="follow">Enable follower notifications</paper-checkbox>
+            <paper-checkbox id="bit-toggle" data-triggers="bits">Enable bits notifications</paper-checkbox>
+            <paper-checkbox id="donation-toggle" data-triggers="donation">Enable donation notifications</paper-checkbox>
+            <paper-checkbox id="subscription-toggle" data-triggers="subscription">Enable subscription notifications</paper-checkbox>
+        </div>
+        <div id="sounds">
+            <div class="title">Sounds</div>
+            <paper-checkbox id="follower-sound-toggle">Enable follower sounds</paper-checkbox>
+            <paper-checkbox id="bit-sound-toggle">Enable bits sounds</paper-checkbox>
+            <paper-checkbox id="donation-sound-toggle">Enable donation sounds</paper-checkbox>
+            <paper-checkbox id="subscription-sound-toggle">Enable subscription sounds</paper-checkbox>
+        </div>
+        <div id="tests">
+            <div class="title">Tests</div>
+            <paper-button id="follow" raised>Follower</paper-button>
+            <paper-button id="bits" raised>Bits</paper-button>
+            <paper-button id="donation" raised>Donation</paper-button>
+            <paper-button id="subscription" raised>Subscription</paper-button>
+        </div>
     </body>
 </html>

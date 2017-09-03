@@ -9,30 +9,36 @@
     "url": "atribecalledkwest.github.io"
   },
   "dependencies": {
+    "express": "^4.13.3",
+    "lastfm": "atribecalledkwest/lastfm-node",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
     "streamtip": "^1.0.1",
-    "tmi.js": "^1.2.1",
-    "request": "^2.81.0"
+    "tmi.js": "^1.2.1"
   },
   "nodecg": {
-    "compatibleRange": "0.8.9",
+    "compatibleRange": "~0.9",
     "dashboardPanels": [
       {
         "name": "notify-panel",
         "title": "Notify Panel",
         "width": 3,
-        "file": "notify-panel/index.html"
+        "file": "notify-panel/index.html",
+        "workspace": "KarenDoesThings"
       },
       {
         "name": "overlay-text",
         "title": "Overlay Text",
-        "width": 2,
-        "file": "overlay-text/index.html"
+        "width": 3,
+        "file": "overlay-text/index.html",
+        "workspace": "KarenDoesThings"
       },
       {
         "name": "lastfm-np",
         "title": "LastFM Now Playing",
         "width": 3,
-        "file": "lastfm-np/index.html"
+        "file": "lastfm-np/index.html",
+        "workspace": "KarenDoesThings"
       }
     ],
     "graphics": [
@@ -43,16 +49,16 @@
       }
     ],
     "soundCues": [
-        {
-            "name": "slide",
-            "assignable": false,
-            "defaultFile": "sounds/slide.ogg"
-        },
-        {
-            "name": "success",
-            "assignable": false,
-            "defaultFile": "sounds/success.ogg"
-        }
+      {
+        "name": "slide",
+        "assignable": false,
+        "defaultFile": "sounds/slide.ogg"
+      },
+      {
+        "name": "success",
+        "assignable": false,
+        "defaultFile": "sounds/success.ogg"
+      }
     ]
   },
   "repository": "https://github.com/atribecalledkwest/karendoesthings-overlay.git",

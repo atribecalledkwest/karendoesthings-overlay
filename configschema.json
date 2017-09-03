@@ -3,6 +3,10 @@
     "type": "object",
 
     "properties": {
+        "debug": {
+            "type": "boolean",
+            "default": false
+        },
         "use": {
             "type": "object",
             "properties": {

@@ -23,7 +23,7 @@ app.on("ready", function() {
         frame: false
     });
 
-    mainWindow.loadURL("http://localhost:9090/graphics/karendoesthings-overlay/index.html");
+    mainWindow.loadURL("http://localhost:9090/bundles/karendoesthings-overlay/graphics/index.html");
 
     mainWindow.on("minimize", function() {
         mainWindow.restore();

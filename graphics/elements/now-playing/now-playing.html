@@ -1,0 +1,37 @@
+<dom-module id="now-playing">
+    <template>
+        <style type="text/css">
+            :host {
+                position: absolute;
+                display: block;
+             };
+             div#nowplayingblock {
+                 position: relative;
+                 top: 120px;
+                 z-index: 4;
+             }
+             div#toppart, div#bottompart {
+                 display: block;
+                 padding: 4px 7px 4px 7px;
+                 color: #dee3e7;
+                 text-shadow: 0px 0px 6px rgba(40, 40, 40, 0.55);
+             }
+             div#toppart {
+                 width: fit-content;
+                 font-size: 18px;
+                 background-color: var(--kdt-blue-light-1);
+             }
+             div#bottompart {
+                 width: fit-content;
+                 font-size: 22px;
+                 background-color: var(--kdt-blue-dark-1);
+             }
+        </style>
+        <div id="nowplayingblock">
+            <div id="toppart">Now Playing</div>
+            <div id="bottompart">{{ artist }} - {{ song }}</div>
+        </div>
+    </template>
+</dom-module>
+
+<script type="text/javascript" src="now-playing.js"></script>

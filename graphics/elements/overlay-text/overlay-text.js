@@ -10,7 +10,7 @@
             },
             tl: {
                 type: Object,
-                value: new TimelineLite()
+                value: new TimelineLite({ autoRemoveChildren: true })
             }
         },
         change: function change(text) {
@@ -25,5 +25,10 @@
                 TweenMax.to(self.$.overlayBorder, 0.5, { opacity: 1 })
             ]);
         }
+    });
+    let rep = nodecg.Replicant("overlay-text", { defaultValue: "KarenDoesThings" });
+    rep.on("change", function(newVal) {
+        let ot = document.querySelector("overlay-text");
+        ot.change(newVal); 
     });
 })();
