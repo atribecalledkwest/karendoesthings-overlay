@@ -2,9 +2,14 @@
     "use strict";
     const request = require("request-promise"); 
 
+    // This is probably a bit more computationally intensive than it should be because of course
+    // JavaScript's indexOf won't match one object with the same object in an array.
+    let returnid = function(user) {
+        return user.user._id;
+    };
     let diff = function(a1, a2) {
-        return a2.filter(function(i) {
-            return a1.indexOf(i) === -1;
+        return a2.map(returnid).filter(function(i) {
+            return a1.map(returnid).indexOf(i) === -1;
         });
     };
 
@@ -17,7 +22,7 @@
             return;
         }
         let firstrun = true;
-        let recent = {};
+        let recent = [];
         let check = function check() {
             let options = {
                 uri: `https://api.twitch.tv/kraken/channels/${nodecg.bundleConfig.twitch.userid}/follows`,
@@ -37,7 +42,9 @@
                     result.forEach(function(follower) {
                         nodecg.sendMessage("follow", follower);
                     });
+                    recent = parsed.follows;
                 }
+
             }).catch(function(e) {
                 nodecg.log.error("Twitch error:", e);
             });
