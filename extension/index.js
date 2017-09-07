@@ -7,47 +7,14 @@ module.exports = function(nodecg) {
         process.exit(1);
     }
 
-    if(nodecg.bundleConfig.use.twitch === true) {
+    if(nodecg.bundleConfig.use.streamlabs === true) {
         try {
-            require("./twitch")(nodecg);
+            require("./streamlabs")(nodecg);
         } catch(e) {
             nodecg.log.error("Caught error:", e.stack);
-            nodecg.log.error("Not loading Twitch library, will not get notifications about follows.");
+            nodecg.log.error("Not loading StreamLabs library, will not get notifications about donations, subscriptions, follows, or hosts.");
         }
     } else {
-        nodecg.log.info("Not using Twitch library, will not get notifications about follows.");
-    }
-
-    if(nodecg.bundleConfig.use.irc === true) {
-        try {
-            require("./irc")(nodecg);
-        } catch(e) {
-            nodecg.log.error("Caught error: ", e.stack);
-            nodecg.log.error("Not loading IRC library, will not get notifications about subscriptions or bits.");
-        }
-    } else {
-        nodecg.log.info("Not using IRC library, will not get notifications about subscriptions or bits.");
-    }
-
-    if(nodecg.bundleConfig.use.lastfm === true) {
-        try {
-            require("./lastfm")(nodecg);
-        } catch(e) {
-            nodecg.log.error("Caught error: ", e.stack);
-            nodecg.log.error("Not loading LastFM library, will not get now playing notifications.");
-        }
-    } else {
-        nodecg.log.info("Not loading LastFM library, will not get now playing notifications.");
-    }
-
-    if(nodecg.bundleConfig.use.streamtips === true) {
-        try {
-            require("./streamtips")(nodecg);
-        } catch(e) {
-            nodecg.log.error("Caught error:", e.stack);
-            nodecg.log.error("Not loading StreamTips library, will not get notifications about donations.");
-        }
-    } else {
-        nodecg.log.info("Not loading StreamTips library, will not get notifications about donations."); 
+        nodecg.log.info("Not loading StreamLabs library, will not get notifications about donations, subscriptions, follows, or hosts.");
     }
 };

@@ -13,8 +13,7 @@
     "lastfm": "atribecalledkwest/lastfm-node",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
-    "streamtip": "^1.0.1",
-    "tmi.js": "^1.2.1"
+    "socket.io-client": "^2.0.3"
   },
   "nodecg": {
     "compatibleRange": "~0.9",

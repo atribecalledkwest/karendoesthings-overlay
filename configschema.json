@@ -10,15 +10,7 @@
         "use": {
             "type": "object",
             "properties": {
-                "irc": {
-                    "type": "boolean",
-                    "default": false
-                },
-                "streamtips": {
-                    "type": "boolean",
-                    "default": false
-                },
-                "twitch": {
+                "streamlabs": {
                     "type": "boolean",
                     "default": false
                 },
@@ -27,67 +19,17 @@
                     "default": false
                 }
             },
-            "required": ["irc", "streamtips", "twitch", "lastfm"]
+            "required": ["streamlabs", "lastfm"]
         },
-        "irc": {
+        "streamlabs": {
             "type": "object",
             "properties": {
-                "connect": {
-                    "type": "object",
-                    "properties": {
-                        "reconnect": {
-                            "type": "boolean",
-                            "default": true
-                        }
-                    }
-                },
-                "identity": {
-                    "type": "object",
-                    "properties": {
-                        "username": {
-                            "type": "string",
-                            "default": "yourtwitchusername"
-                        },
-                        "password": {
-                            "type": "string",
-                            "default": "oauth:yourtwitchoauthtoken"
-                        }
-                    },
-                    "required": ["username", "password"]
-                },
-                "channels": {
-                    "type": "array",
-                    "default": ["#yourtwitchusername"]
-                }
-            }
-        },
-        "streamtips": {
-            "type": "object",
-            "properties": {
-                "clientid": {
+                "sockettoken": {
                     "type": "string",
-                    "default": "yourstreamtipsclientid"
-                },
-                "accesstoken": {
-                    "type": "string",
-                    "default": "yourstreamtipsaccesstoken"
+                    "default": ""
                 }
             },
-            "required": ["clientid", "accesstoken"]
-        },
-        "twitch": {
-            "type": "object",
-            "properties": {
-                "userid": {
-                    "type": "number",
-                    "default": 1337
-                },
-                "clientid": {
-                    "type": "string",
-                    "default": "yourtwitchclientid"
-                }
-            },
-            "required": ["userid", "clientid"]
+            "required": ["sockettoken"]
         },
         "lastfm": {
             "type": "object",

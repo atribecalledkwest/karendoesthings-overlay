@@ -25,32 +25,50 @@ let setup = function setup() {
     let testfollow = document.querySelector("paper-button#follow"),
         testbits = document.querySelector("paper-button#bits"),
         testdonations = document.querySelector("paper-button#donation"),
-        testsubscription = document.querySelector("paper-button#subscription");
+        testsubscription = document.querySelector("paper-button#subscription"),
+        testhost = document.querySelector("paper-button#host");
     testfollow.onclick = function() {
         nodecg.sendMessage("follow", {
-            user: {
-                display_name: "KarenDoesThings",
-                name: "karendoesthings"
-            }
+            type: "follow",
+            message: [{
+                name: "KarenDoesThings"
+            }]
         });
     };
     testbits.onclick = function() {
         nodecg.sendMessage("bits", {
-            username: "karendoesthings",
-            bits: Math.round(Math.random() * 1000)
+            type: "bits",
+            message: [{
+                name: "KarenDoesThings",
+                amount: Math.round(Math.random() * 1000)
+            }]
         });
     };
     testdonations.onclick = function() {
         nodecg.sendMessage("donation", {
-            currencySymbol: "$",
-            amount: "4.20",
-            username: "KarenDoesThings"
+            type: "donation",
+            message: [{
+                formatted_amount: "$4.20",
+                name: "KarenDoesThings"
+            }]
         });
     };
     testsubscription.onclick = function() {
         nodecg.sendMessage("subscription", {
-            username: "karendoesthings",
-            months: Math.random() > 0.5 ? 1 : Math.ceil(Math.random() * 10)
+            type: "subscription",
+            message: [{
+                name: "KarenDoesThings",
+                months: Math.random() > 0.5 ? 1 : Math.ceil(Math.random() * 10)
+            }]
+        });
+    };
+    testhost.onclick = function() {
+        nodecg.sendMessage("host", {
+            type: "host",
+            message: [{
+                name: "mang0",
+                viewers: Math.ceil(Math.random()*100)
+            }]
         });
     };
 

@@ -12,6 +12,10 @@
     };
 
 
+    /*
+     * Rather than attempting to access each replicant synchronously, we instead set up the replicant
+     * early and set the "change" event to change one of the static properties inside the options object.
+     */
     let options = {
         "enabled": {},
         "sound": {}
@@ -81,6 +85,8 @@
                         } else {
                             text = "New subscription!";
                         }
+                    } else if(type === "host") {
+                        text = amount + " viewer host!";
                     }
                     self.$.paneltext.innerText = text;
                 }
@@ -121,37 +127,35 @@
         }
         let panel = document.querySelector("notify-panel");
 
-        // Follower listener is separate from other twitch stuff because loltwitch.
-        if(nodecg.bundleConfig.use.twitch || nodecg.bundleConfig.debug) {
+        if(nodecg.bundleConfig.use.streamlabs || nodecg.bundleConfig.debug) {
             if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up follow listener");
             nodecg.listenFor("follow", function(content) {
-                if(nodecg.bundleConfig.debug) nodecg.log.info("Got follow:", content.user);
-                if(typeof content.user.display_name === "string") {
-                    panel.popup("follow", content.user.display_name);
-                } else {
-                    panel.popup("follow", content.user.name);
-                }
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Got follow:", content.message[0].name);
+                panel.popup("follow", content.message[0].name);
             });
-        }
-        // IRC allows us to listen to subscription and bit events.
-        if(nodecg.bundleConfig.use.irc || nodecg.bundleConfig.debug) {
-            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up bits and subscription listener");
+
+            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up bits listener");
             nodecg.listenFor("bits", function(content) {
-                if(nodecg.bundleConfig.debug) nodecg.log.info("Got bits:", content.username, content.bits);
-                panel.popup("bits", content.username, content.bits);
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Got bits:", content.message[0].name, content.message[0].amount);
+                panel.popup("bits", content.message[0].name, content.message[0].amount);
             });
+
+            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up subscription listener");
             nodecg.listenFor("subscription", function(content) {
-                if(nodecg.bundleConfig.debug) nodecg.log.info("Got subscription:", content.username, content.months);
-                panel.popup("subscription", content.username, content.months);
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Got subscription:", content.message[0].name, content.message[0].months);
+                panel.popup("subscription", content.message[0].name, content.message[0].months);
             });
-        }
-        // Donations are processed seperately through StreamTip
-        if(nodecg.bundleConfig.use.donations || nodecg.bundleConfig.debug) {
+
             if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up donation listener");
             nodecg.listenFor("donation", function(content) {
-                let amountstr = `${content.currencySymbol}${content.amount}`;
-                if(nodecg.bundleConfig.debug) nodecg.log.info("Got dontion:", content.username, amountstr);
-                panel.popup("donation", content.username, amountstr);
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Got dontion:", content.message[0].name, content.message[0].formatted_amount);
+                panel.popup("donation", content.message[0].name, content.message[0].formatted_amount);
+            });
+
+            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up host listener");
+            nodecg.listenFor("host", function(content) {
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Got host:", content.message[0].name, content.message[0].viewers);
+                panel.popup("host", content.message[0].name, content.message[0].viewers);
             });
         }
     };
