@@ -12,33 +12,33 @@
         }
         
         const streamlabs = io.connect(`https://sockets.streamlabs.com/?token=${nodecg.bundleConfig.streamlabs.sockettoken}`, { reconnect: true });
-        streamlabs.on('connect', function() {
+        streamlabs.on("connect", function() {
             nodecg.log.info("Connected to StreamLabs.");
         });
-        streamlabs.on('event', function(event) {
+        streamlabs.on("event", function(event) {
             // This isn't really needed, but it makes the client-side code a bit less messy
             switch(event.type) {
-                case "follow":
-                    nodecg.sendMessage("follow", event);
-                    break;
-                case "bits": 
-                    nodecg.sendMessage("bits", event);
-                    break;
-                case "donation":
-                    nodecg.sendMessage("donation", event);
-                    break;
-                case "host":
-                    nodecg.sendMessage("host", event);
-                    break;
-                case "subscription":
-                    nodecg.sendMessage("subscription", event);
-                    break;
-                default:
-                    break;
+            case "follow":
+                nodecg.sendMessage("follow", event);
+                break;
+            case "bits":
+                nodecg.sendMessage("bits", event);
+                break;
+            case "donation":
+                nodecg.sendMessage("donation", event);
+                break;
+            case "host":
+                nodecg.sendMessage("host", event);
+                break;
+            case "subscription":
+                nodecg.sendMessage("subscription", event);
+                break;
+            default:
+                break;
             }
         });
-        streamlabs.on('disconnect', function() {
+        streamlabs.on("disconnect", function() {
             nodecg.log.info("Disconnected from StreamLabs");
-        })
+        });
     };
 })();
