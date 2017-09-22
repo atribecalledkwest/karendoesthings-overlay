@@ -14,6 +14,9 @@
     "socket.io-client": "^2.0.3",
     "ws": "^3.1.0"
   },
+  "scripts": {
+    "test": "eslint extension/*.js dashboard/**/*.js graphics/**/*.js"
+  },
   "nodecg": {
     "compatibleRange": "~0.9",
     "dashboardPanels": [
@@ -67,5 +70,8 @@
     ]
   },
   "repository": "https://github.com/atribecalledkwest/karendoesthings-overlay.git",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "eslint": "^4.7.2"
+  }
 }
