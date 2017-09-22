@@ -26,7 +26,7 @@
         let button = document.querySelector(`paper-button#layout_${newVal}`);
         let activebutton = document.querySelector("paper-button.active");
         if(activebutton) {
-			activebutton.className = "";
+            activebutton.className = "";
         }
         button.className = "active";
     });
