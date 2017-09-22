@@ -1,5 +1,5 @@
 # karendoesthings-overlay
-![karendoesthings-overlay](https://raw.githubusercontent.com/nodecg/nodecg/master/screenshot.png)
+![karendoesthings-overlay](https://raw.githubusercontent.com/atribecalledkwest/karendoesthings-overlay/master/screenshot.png)
 
 This is my NodeCG stream overlay, built around Polymer elements and GreenSock's animation library, and based heavily around [agdq16-layouts][https://github.com/GamesDoneQuick/agdq16-layouts].
 
