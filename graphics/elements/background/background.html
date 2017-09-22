@@ -1,36 +1,73 @@
 <dom-module id="background-layer">
-    <template>
-        <style type="text/css">
-            :host {
-                position: absolute;
-                display: block;
-                overflow: hidden;
-            }
-            .background {
-                position: static;
-                z-index: -10;
-                width: 1280px;
-                height: 720px;
-                margin: 0px;
-                overflow: hidden;
-                background-image: url(../../img/bg-wide2.png);
-                animation:100s scroll infinite linear;
-                -webkit-mask-image: none;
-            }
-            #foreground {
-                z-index: -9;
-            }
-            @keyframes scroll{
-                100%{
-                    background-position: -3000px 0px;
-                }
-            }
-        </style>
-        <div class="container" id="bgcontainer">
-            <div class="background" id="plate"></div>
-            <div class="background" id="placeholder"></div>
-        </div>
-    </template>
+	<template>
+		<style type="text/css">
+			:host {
+				position: absolute;
+				display: block;
+				overflow: hidden;
+			}
+			.background {
+				position: static;
+				z-index: -11;
+				width: 1280px;
+				height: 720px;
+				margin: 0px;
+				overflow: hidden;
+				/*background-image: url(../../img/bg-wide2.png);*/
+				/* Turning this off for now because it's just not working out super well + masks performance-wise
+				animation:100s scroll infinite linear;
+				-webkit-mask-image: none;
+				*/
+			}
+			div.textholder {
+				position: absolute;
+				top: 0px;
+				width: 1280px;
+				height: 720px;
+			}
+			span.text, span.border {
+				color: var(--kdt-text);
+				font-size: 102px;
+				width: 1280px;
+				height: 720px;
+
+				position: absolute;
+				top: 285px;
+				text-align: center;
+				/*position: relative;/**/
+			}
+			span.text {
+				z-index: -8;
+			}
+			span.border {
+				-webkit-text-stroke: 16px var(--kdt-text-border);
+				text-shadow: 0px 0px 25px rgba(30, 30, 30, 1);
+				z-index: -9;
+			}
+			#plate {
+				position: absolute;
+				top: 0px;
+				background-image: url(../../img/bg.png);
+				z-index: -10;
+			}
+			#placeholder {
+				background-image: url(../../img/bg.png);
+				z-index: -7;
+				opacity: 1;
+			}
+			@keyframes scroll{
+				100%{
+					background-position: -3000px 0px;
+				}
+			}
+		</style>
+		<div class="container" id="bgcontainer">
+			<div class="background" id="placeholder"></div>
+			<div class="textholder" id="textholder">
+			</div>
+			<div class="background" id="plate"></div>
+		</div>
+	</template>
 </dom-module>
 
 <script type="text/javascript" src="background.js"></script>
