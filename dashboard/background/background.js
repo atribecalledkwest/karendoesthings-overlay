@@ -21,4 +21,14 @@
             nodecg.sendMessage("obs-scenechange", item);
         };
     }
+
+    scene.on("change", newVal => {
+        let button = document.querySelector(`paper-button#layout_${newVal}`);
+        let activebutton = document.querySelector("paper-button.active");
+        if(activebutton) {
+			activebutton.className = "";
+        }
+        button.className = "active";
+    });
+
 })();
