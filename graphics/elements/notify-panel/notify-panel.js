@@ -64,33 +64,33 @@
 
             if(nodecg.bundleConfig.use.streamlabs || nodecg.bundleConfig.debug) {
                 if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up follow listener");
-                nodecg.listenFor("follow", function(content) {
-                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got follow:", content.message[0].name);
-                    self.popup("follow", content.message[0].name);
+                nodecg.listenFor("twitch-follow", "nodecg-streamlabs", function(content) {
+                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got follow:", content.name);
+                    self.popup("follow", content.name);
                 });
 
                 if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up bits listener");
-                nodecg.listenFor("bits", function(content) {
-                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got bits:", content.message[0].name, content.message[0].amount);
-                    self.popup("bits", content.message[0].name, content.message[0].amount);
+                nodecg.listenFor("twitch-bits", "nodecg-streamlabs", function(content) {
+                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got bits:", content.name, content.amount);
+                    self.popup("bits", content.name, content.amount);
                 });
 
                 if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up subscription listener");
-                nodecg.listenFor("subscription", function(content) {
-                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got subscription:", content.message[0].name, content.message[0].months);
-                    self.popup("subscription", content.message[0].name, content.message[0].months);
-                });
-
-                if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up donation listener");
-                nodecg.listenFor("donation", function(content) {
-                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got dontion:", content.message[0].name, content.message[0].formatted_amount);
-                    self.popup("donation", content.message[0].name, content.message[0].formatted_amount);
+                nodecg.listenFor("twitch-subscription", "nodecg-streamlabs", function(content) {
+                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got subscription:", content.name, content.months);
+                    self.popup("subscription", content.name, content.months);
                 });
 
                 if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up host listener");
-                nodecg.listenFor("host", function(content) {
-                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got host:", content.message[0].name, content.message[0].viewers);
-                    self.popup("host", content.message[0].name, content.message[0].viewers);
+                nodecg.listenFor("twitch-host", "nodecg-streamlabs", function(content) {
+                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got host:", content.name, content.viewers);
+                    self.popup("host", content.name, content.viewers);
+                });
+
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up donation listener");
+                nodecg.listenFor("donation", "nodecg-streamlabs", function(content) {
+                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got dontion:", content.name, content.formatted_amount);
+                    self.popup("donation", content.name, content.formatted_amount);
                 });
             }
         },
