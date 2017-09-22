@@ -1,7 +1,7 @@
 # karendoesthings-overlay
 ![karendoesthings-overlay](https://raw.githubusercontent.com/atribecalledkwest/karendoesthings-overlay/master/screenshot.png)
 
-This is my NodeCG stream overlay, built around Polymer elements and GreenSock's animation library, and based heavily around [agdq16-layouts][https://github.com/GamesDoneQuick/agdq16-layouts].
+This is my NodeCG stream overlay, built around Polymer elements and GreenSock's animation library, and based heavily around [agdq16-layouts](https://github.com/GamesDoneQuick/agdq16-layouts).
 
 ## Reasons for this overlay
 I needed something that fit my overall colorscheme, was customizable, extendable, and could fit easily into what I already used. I also wanted to try my hand at NodeCG after falling in love with it in the AGDQ16 and AGDQ17 streams.
