@@ -11,7 +11,17 @@
             tl: {
                 type: Object,
                 value: new TimelineLite({ autoRemoveChildren: true })
+            },
+            _rep: {
+            	type: Object,
+            	value: nodecg.Replicant("overlay-text", { defaultValue: "KarenDoesThings" })
             }
+        },
+        ready: function ready() {
+        	let self = this;
+        	self._rep.on("change", function(newVal) {
+        		self.change(newVal);
+        	});
         },
         change: function change(text) {
             let self = this;
@@ -25,10 +35,5 @@
                 TweenMax.to(self.$.overlayBorder, 0.5, { opacity: 1 })
             ]);
         }
-    });
-    let rep = nodecg.Replicant("overlay-text", { defaultValue: "KarenDoesThings" });
-    rep.on("change", function(newVal) {
-        let ot = document.querySelector("overlay-text");
-        ot.change(newVal); 
     });
 })();

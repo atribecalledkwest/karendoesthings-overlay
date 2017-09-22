@@ -25,7 +25,7 @@
         let name = type_replicants[i],
             rep = nodecg.Replicant(name, { defaultValue: true });
         // Just set a default here because
-        options.enabled[i] = true; 
+        options.enabled[i] = true;
         replicants[name] = rep;
         rep.on("change", function(newVal) {
             if(nodecg.bundleConfig.debug) nodecg.log.info(type_replicants[i], "changed:", newVal);
@@ -35,7 +35,7 @@
     for(let i in type_sound_replicants) {
         let name = type_sound_replicants[i],
             rep = nodecg.Replicant(name);
-        options.sound[i] = true; 
+        options.sound[i] = true;
         replicants[name] = rep;
         rep.on("change", function(newVal) {
             if(nodecg.bundleConfig.debug) nodecg.log.info(type_sound_replicants[i], "changed:", newVal);
@@ -55,9 +55,48 @@
                 value: new TimelineMax({ autoRemoveChildren: true })
             }
         },
+        ready: function ready() {
+	        if(!nodecg.bundleConfig) {
+	            return;
+	        }
+
+	        let self = this;
+
+	        if(nodecg.bundleConfig.use.streamlabs || nodecg.bundleConfig.debug) {
+	            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up follow listener");
+	            nodecg.listenFor("follow", function(content) {
+	                if(nodecg.bundleConfig.debug) nodecg.log.info("Got follow:", content.message[0].name);
+	                self.popup("follow", content.message[0].name);
+	            });
+
+	            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up bits listener");
+	            nodecg.listenFor("bits", function(content) {
+	                if(nodecg.bundleConfig.debug) nodecg.log.info("Got bits:", content.message[0].name, content.message[0].amount);
+	                self.popup("bits", content.message[0].name, content.message[0].amount);
+	            });
+
+	            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up subscription listener");
+	            nodecg.listenFor("subscription", function(content) {
+	                if(nodecg.bundleConfig.debug) nodecg.log.info("Got subscription:", content.message[0].name, content.message[0].months);
+	                self.popup("subscription", content.message[0].name, content.message[0].months);
+	            });
+
+	            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up donation listener");
+	            nodecg.listenFor("donation", function(content) {
+	                if(nodecg.bundleConfig.debug) nodecg.log.info("Got dontion:", content.message[0].name, content.message[0].formatted_amount);
+	                self.popup("donation", content.message[0].name, content.message[0].formatted_amount);
+	            });
+
+	            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up host listener");
+	            nodecg.listenFor("host", function(content) {
+	                if(nodecg.bundleConfig.debug) nodecg.log.info("Got host:", content.message[0].name, content.message[0].viewers);
+	                self.popup("host", content.message[0].name, content.message[0].viewers);
+	            });
+        }
+        },
         popup: function popup(type, user, amount) {
             let self = this;
-            
+
             if(!(type in type_replicants)) {
                 throw new Error(`Type of ${type} has not been implemented`);
             }
@@ -76,7 +115,7 @@
                     if(type === "follow") {
                         text = "New follower!";
                     } else if(type === "bits") {
-                        text = amount + "x bits!"; 
+                        text = amount + "x bits!";
                     } else if(type === "donation") {
                         text = amount + " donation!";
                     } else if(type === "subscription") {
@@ -120,44 +159,4 @@
             return this;
         }
     });
-
-    let setup = function setup() {
-        if(!nodecg.bundleConfig) {
-            return;
-        }
-        let panel = document.querySelector("notify-panel");
-
-        if(nodecg.bundleConfig.use.streamlabs || nodecg.bundleConfig.debug) {
-            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up follow listener");
-            nodecg.listenFor("follow", function(content) {
-                if(nodecg.bundleConfig.debug) nodecg.log.info("Got follow:", content.message[0].name);
-                panel.popup("follow", content.message[0].name);
-            });
-
-            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up bits listener");
-            nodecg.listenFor("bits", function(content) {
-                if(nodecg.bundleConfig.debug) nodecg.log.info("Got bits:", content.message[0].name, content.message[0].amount);
-                panel.popup("bits", content.message[0].name, content.message[0].amount);
-            });
-
-            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up subscription listener");
-            nodecg.listenFor("subscription", function(content) {
-                if(nodecg.bundleConfig.debug) nodecg.log.info("Got subscription:", content.message[0].name, content.message[0].months);
-                panel.popup("subscription", content.message[0].name, content.message[0].months);
-            });
-
-            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up donation listener");
-            nodecg.listenFor("donation", function(content) {
-                if(nodecg.bundleConfig.debug) nodecg.log.info("Got dontion:", content.message[0].name, content.message[0].formatted_amount);
-                panel.popup("donation", content.message[0].name, content.message[0].formatted_amount);
-            });
-
-            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up host listener");
-            nodecg.listenFor("host", function(content) {
-                if(nodecg.bundleConfig.debug) nodecg.log.info("Got host:", content.message[0].name, content.message[0].viewers);
-                panel.popup("host", content.message[0].name, content.message[0].viewers);
-            });
-        }
-    };
-    setup();
 })();
