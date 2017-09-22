@@ -56,43 +56,43 @@
             }
         },
         ready: function ready() {
-	        if(!nodecg.bundleConfig) {
-	            return;
-	        }
+            if(!nodecg.bundleConfig) {
+                return;
+            }
 
-	        let self = this;
+            let self = this;
 
-	        if(nodecg.bundleConfig.use.streamlabs || nodecg.bundleConfig.debug) {
-	            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up follow listener");
-	            nodecg.listenFor("follow", function(content) {
-	                if(nodecg.bundleConfig.debug) nodecg.log.info("Got follow:", content.message[0].name);
-	                self.popup("follow", content.message[0].name);
-	            });
+            if(nodecg.bundleConfig.use.streamlabs || nodecg.bundleConfig.debug) {
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up follow listener");
+                nodecg.listenFor("follow", function(content) {
+                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got follow:", content.message[0].name);
+                    self.popup("follow", content.message[0].name);
+                });
 
-	            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up bits listener");
-	            nodecg.listenFor("bits", function(content) {
-	                if(nodecg.bundleConfig.debug) nodecg.log.info("Got bits:", content.message[0].name, content.message[0].amount);
-	                self.popup("bits", content.message[0].name, content.message[0].amount);
-	            });
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up bits listener");
+                nodecg.listenFor("bits", function(content) {
+                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got bits:", content.message[0].name, content.message[0].amount);
+                    self.popup("bits", content.message[0].name, content.message[0].amount);
+                });
 
-	            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up subscription listener");
-	            nodecg.listenFor("subscription", function(content) {
-	                if(nodecg.bundleConfig.debug) nodecg.log.info("Got subscription:", content.message[0].name, content.message[0].months);
-	                self.popup("subscription", content.message[0].name, content.message[0].months);
-	            });
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up subscription listener");
+                nodecg.listenFor("subscription", function(content) {
+                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got subscription:", content.message[0].name, content.message[0].months);
+                    self.popup("subscription", content.message[0].name, content.message[0].months);
+                });
 
-	            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up donation listener");
-	            nodecg.listenFor("donation", function(content) {
-	                if(nodecg.bundleConfig.debug) nodecg.log.info("Got dontion:", content.message[0].name, content.message[0].formatted_amount);
-	                self.popup("donation", content.message[0].name, content.message[0].formatted_amount);
-	            });
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up donation listener");
+                nodecg.listenFor("donation", function(content) {
+                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got dontion:", content.message[0].name, content.message[0].formatted_amount);
+                    self.popup("donation", content.message[0].name, content.message[0].formatted_amount);
+                });
 
-	            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up host listener");
-	            nodecg.listenFor("host", function(content) {
-	                if(nodecg.bundleConfig.debug) nodecg.log.info("Got host:", content.message[0].name, content.message[0].viewers);
-	                self.popup("host", content.message[0].name, content.message[0].viewers);
-	            });
-        }
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up host listener");
+                nodecg.listenFor("host", function(content) {
+                    if(nodecg.bundleConfig.debug) nodecg.log.info("Got host:", content.message[0].name, content.message[0].viewers);
+                    self.popup("host", content.message[0].name, content.message[0].viewers);
+                });
+            }
         },
         popup: function popup(type, user, amount) {
             let self = this;

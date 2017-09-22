@@ -13,15 +13,15 @@
                 value: new TimelineLite({ autoRemoveChildren: true })
             },
             _rep: {
-            	type: Object,
-            	value: nodecg.Replicant("overlay-text", { defaultValue: "KarenDoesThings" })
+                type: Object,
+                value: nodecg.Replicant("overlay-text", { defaultValue: "KarenDoesThings" })
             }
         },
         ready: function ready() {
-        	let self = this;
-        	self._rep.on("change", function(newVal) {
-        		self.change(newVal);
-        	});
+            let self = this;
+            self._rep.on("change", function(newVal) {
+                self.change(newVal);
+            });
         },
         change: function change(text) {
             let self = this;
