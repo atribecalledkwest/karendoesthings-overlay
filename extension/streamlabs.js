@@ -10,7 +10,7 @@
             nodecg.log.error("`streamlabs` not defined in cfg/karendoesthings-overlay.json, StreamLabs module will be disabled.");
             return;
         }
-        
+
         const streamlabs = io.connect(`https://sockets.streamlabs.com/?token=${nodecg.bundleConfig.streamlabs.sockettoken}`, { reconnect: true });
         streamlabs.on("connect", function() {
             nodecg.log.info("Connected to StreamLabs.");
