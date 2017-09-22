@@ -11,9 +11,8 @@
   "dependencies": {
     "express": "^4.13.3",
     "lastfm": "atribecalledkwest/lastfm-node",
-    "request": "^2.81.0",
-    "request-promise": "^4.2.1",
-    "socket.io-client": "^2.0.3"
+    "socket.io-client": "^2.0.3",
+    "ws": "^3.1.0"
   },
   "nodecg": {
     "compatibleRange": "~0.9",
@@ -37,6 +36,13 @@
         "title": "LastFM Now Playing",
         "width": 3,
         "file": "lastfm-np/index.html",
+        "workspace": "KarenDoesThings"
+      },
+      {
+        "name": "background",
+        "title": "Scene",
+        "width": 3,
+        "file": "background/index.html",
         "workspace": "KarenDoesThings"
       }
     ],

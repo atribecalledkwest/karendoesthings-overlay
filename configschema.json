@@ -1,53 +1,67 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "object",
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
 
-    "properties": {
-        "debug": {
-            "type": "boolean",
-            "default": false
-        },
-        "use": {
-            "type": "object",
-            "properties": {
-                "streamlabs": {
-                    "type": "boolean",
-                    "default": false
-                },
-                "lastfm": {
-                    "type": "boolean",
-                    "default": false
-                }
-            },
-            "required": ["streamlabs", "lastfm"]
-        },
-        "streamlabs": {
-            "type": "object",
-            "properties": {
-                "sockettoken": {
-                    "type": "string",
-                    "default": ""
-                }
-            },
-            "required": ["sockettoken"]
-        },
-        "lastfm": {
-            "type": "object",
-            "properties": {
-                "apikey": {
-                    "type": "string",
-                    "default": "yourlastfmapikey"
-                },
-                "sharedsecret": {
-                    "type": "string",
-                    "default": "yourlastfmsharedsecret"
-                },
-                "target": {
-                    "type": "string",
-                    "default": "targetlastfmaccount"
-                }
-            },
-            "required": ["apikey", "sharedsecret", "target"]
-        }
-    }
+	"properties": {
+		"debug": {
+			"type": "boolean",
+			"default": false
+		},
+		"use": {
+			"type": "object",
+			"properties": {
+				"streamlabs": {
+					"type": "boolean",
+					"default": false
+				},
+				"lastfm": {
+					"type": "boolean",
+					"default": false
+				},
+				"obs": {
+					"type": "boolean",
+					"default": false
+				}
+			},
+			"required": ["streamlabs", "lastfm"]
+		},
+		"streamlabs": {
+			"type": "object",
+			"properties": {
+				"sockettoken": {
+					"type": "string",
+					"default": ""
+				}
+			},
+			"required": ["sockettoken"]
+		},
+		"lastfm": {
+			"type": "object",
+			"properties": {
+				"apikey": {
+					"type": "string",
+					"default": "yourlastfmapikey"
+				},
+				"sharedsecret": {
+					"type": "string",
+					"default": "yourlastfmsharedsecret"
+				},
+				"target": {
+					"type": "string",
+					"default": "targetlastfmaccount"
+				}
+			},
+			"required": ["apikey", "sharedsecret", "target"]
+		},
+		"obs": {
+			"type": "object",
+			"properties": {
+				"url": {
+					"type": "string",
+					"default": "ws://localhost:4444"
+				}
+			},
+			"required": ["url"]
+		}
+	}
 }
