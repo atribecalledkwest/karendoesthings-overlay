@@ -18,6 +18,9 @@
     "test": "eslint extension/*.js dashboard/**/*.js graphics/**/*.js"
   },
   "nodecg": {
+    "bundleDependencies": {
+      "nodecg-streamlabs": "^v0.1.0"
+    },
     "compatibleRange": "~0.9",
     "dashboardPanels": [
       {
