@@ -10,10 +10,6 @@
 		"use": {
 			"type": "object",
 			"properties": {
-				"streamlabs": {
-					"type": "boolean",
-					"default": false
-				},
 				"lastfm": {
 					"type": "boolean",
 					"default": false
@@ -24,16 +20,6 @@
 				}
 			},
 			"required": ["streamlabs", "lastfm"]
-		},
-		"streamlabs": {
-			"type": "object",
-			"properties": {
-				"sockettoken": {
-					"type": "string",
-					"default": ""
-				}
-			},
-			"required": ["sockettoken"]
 		},
 		"lastfm": {
 			"type": "object",
