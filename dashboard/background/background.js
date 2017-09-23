@@ -4,6 +4,7 @@
     let layouts = [
         "16x9",
         "4x3",
+        "starting",
         "brb",
         "none",
         "16x9_webcam_rect",

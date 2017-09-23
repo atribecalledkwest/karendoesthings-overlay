@@ -4,6 +4,7 @@
     require([
         "layouts/16x9",
         "layouts/4x3",
+        "layouts/starting",
         "layouts/brb",
         "layouts/none",
         // Fun with webcams!
