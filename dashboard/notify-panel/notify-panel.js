@@ -28,47 +28,32 @@ let setup = function setup() {
         testsubscription = document.querySelector("paper-button#subscription"),
         testhost = document.querySelector("paper-button#host");
     testfollow.onclick = function() {
-        nodecg.sendMessage("follow", {
-            type: "follow",
-            message: [{
-                name: "KarenDoesThings"
-            }]
+        nodecg.sendMessageToBundle("twitch-follow", "nodecg-streamlabs" {
+            name: "KarenDoesThings"
         });
     };
     testbits.onclick = function() {
-        nodecg.sendMessage("bits", {
-            type: "bits",
-            message: [{
-                name: "KarenDoesThings",
-                amount: Math.round(Math.random() * 1000)
-            }]
+        nodecg.sendMessageToBundle("twitch-bits", "nodecg-streamlabs", {
+            name: "KarenDoesThings",
+            amount: Math.round(Math.random() * 1000)
         });
     };
     testdonations.onclick = function() {
-        nodecg.sendMessage("donation", {
-            type: "donation",
-            message: [{
-                formatted_amount: "$4.20",
-                name: "KarenDoesThings"
-            }]
+        nodecg.sendMessageToBundle("donation", "nodecg-streamlabs", {
+            formatted_amount: "$4.20",
+            name: "KarenDoesThings"
         });
     };
     testsubscription.onclick = function() {
-        nodecg.sendMessage("subscription", {
-            type: "subscription",
-            message: [{
-                name: "KarenDoesThings",
-                months: Math.random() > 0.5 ? 1 : Math.ceil(Math.random() * 10)
-            }]
+        nodecg.sendMessageToBundle("twitch-subscription", "nodecg-streamlabs", {
+            name: "KarenDoesThings",
+            months: Math.random() > 0.5 ? 1 : Math.ceil(Math.random() * 10)
         });
     };
     testhost.onclick = function() {
-        nodecg.sendMessage("host", {
-            type: "host",
-            message: [{
-                name: "mang0",
-                viewers: Math.ceil(Math.random()*100)
-            }]
+        nodecg.sendMessageToBundle("twitch-host", "nodecg-streamlabs", {
+            name: "mang0",
+            viewers: Math.ceil(Math.random()*100)
         });
     };
 
