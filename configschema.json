@@ -19,7 +19,7 @@
 					"default": false
 				}
 			},
-			"required": ["streamlabs", "lastfm"]
+			"required": ["lastfm", "obs"]
 		},
 		"lastfm": {
 			"type": "object",
