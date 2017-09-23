@@ -28,7 +28,7 @@ let setup = function setup() {
         testsubscription = document.querySelector("paper-button#subscription"),
         testhost = document.querySelector("paper-button#host");
     testfollow.onclick = function() {
-        nodecg.sendMessageToBundle("twitch-follow", "nodecg-streamlabs" {
+        nodecg.sendMessageToBundle("twitch-follow", "nodecg-streamlabs", {
             name: "KarenDoesThings"
         });
     };
