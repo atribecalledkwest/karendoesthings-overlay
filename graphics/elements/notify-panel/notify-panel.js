@@ -153,7 +153,7 @@
                         nodecg.playSound("slide");
                     }
                 },
-                top: "-80px",
+                top: "-100px",
                 ease: Power1.easeInOut
             })).add(TweenMax.to({}, 1.5, {}));
             return this;
