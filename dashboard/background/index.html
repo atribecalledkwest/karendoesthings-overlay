@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="import" href="../../components/neon-animation/web-animations.html" />
-		<link rel="import" href="../../components/paper-dropdown-menu/paper-dropdown-menu.html" />
-		<link rel="import" href="../../components/paper-item/paper-item.html" />
-		<link rel="import" href="../../components/paper-listbox/paper-listbox.html" />
-		<link rel="import" href="../../components/paper-button/paper-button.html" />
+    <head>
+        <link rel="import" href="../../components/neon-animation/web-animations.html" />
+        <link rel="import" href="../../components/paper-dropdown-menu/paper-dropdown-menu.html" />
+        <link rel="import" href="../../components/paper-item/paper-item.html" />
+        <link rel="import" href="../../components/paper-listbox/paper-listbox.html" />
+        <link rel="import" href="../../components/paper-button/paper-button.html" />
 
-		<style>
+        <style>
            paper-button {
                 display: block;
                 text-align: center;
@@ -23,31 +23,32 @@
                 background-color: var(--paper-grey-500);
             }
             paper-button.active {
-            	background-color: var(--paper-light-blue-300);
+                background-color: var(--paper-light-blue-300);
             }
-		</style>
-	<script type="text/javascript" src="../../components/requirejs/require.js"></script>
-	<script>
-	// We use this for layouts and layouts alone.
-	requirejs.config({
-		baseUrl: '../graphics/elements/',
-		paths: {
-			layouts: './background/layouts'
-		}
-	});
-	</script>
+        </style>
+    <script type="text/javascript" src="../../components/requirejs/require.js"></script>
+    <script>
+    // We use this for layouts and layouts alone.
+    requirejs.config({
+        baseUrl: '../graphics/elements/',
+        paths: {
+            layouts: './background/layouts'
+        }
+    });
+    </script>
 
-	</head>
-	<body>
-		<div id="options">
-			<paper-button raised id="layout_16x9">16x9</paper-button>
-			<paper-button raised id="layout_4x3">4x3</paper-button>
-			<paper-button raised id="layout_brb">brb</paper-button>
-			<paper-button raised id="layout_none">none</paper-button>
-			<paper-button raised id="layout_16x9_webcam_rect">16x9 (16x9 webcam)</paper-button>
-			<paper-button raised id="layout_16x9_webcam_square">16x9 (4x3 webcam)</paper-button>
-			<paper-button raised id="layout_4x3_webcam">4x3 (webcam)</paper-button>
-		</div>
-	</body>
-	<script type="text/javascript" src="background.js"></script>
+    </head>
+    <body>
+        <div id="options">
+            <paper-button raised id="layout_16x9">16x9</paper-button>
+            <paper-button raised id="layout_4x3">4x3</paper-button>
+            <paper-button raised id="layout_starting">starting</paper-button>
+            <paper-button raised id="layout_brb">brb</paper-button>
+            <paper-button raised id="layout_none">none</paper-button>
+            <paper-button raised id="layout_16x9_webcam_rect">16x9 (16x9 webcam)</paper-button>
+            <paper-button raised id="layout_16x9_webcam_square">16x9 (4x3 webcam)</paper-button>
+            <paper-button raised id="layout_4x3_webcam">4x3 (webcam)</paper-button>
+        </div>
+    </body>
+    <script type="text/javascript" src="background.js"></script>
 </html>
