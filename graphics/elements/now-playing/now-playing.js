@@ -66,7 +66,7 @@
             this.tl.add(TweenMax.to(this.$.toppart, 1.15, {
                 x: "0%",
                 ease: Bounce.easeOut
-            })).add(TweenMax.to(this.$.bottompart, 1.15, {
+            })).add(TweenMax.to(this.$.bottompart, 2.15, {
                 x: "0%",
                 ease: Bounce.easeOut
             }), "-=0.4");
