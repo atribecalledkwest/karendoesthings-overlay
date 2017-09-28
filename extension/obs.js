@@ -65,7 +65,9 @@
 
         nodecg.listenFor("obs-reconnect", () => {
             if(sock.readyState === 1) {
+                sock.onclose = null;
                 sock.close();
+                setup();
             }
         });
 
