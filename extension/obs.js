@@ -13,7 +13,7 @@
 
         let rate = 5,
             minRate = 5,
-            maxRate = 30;
+            maxRate = 17;
 
         let id = 0;
 
