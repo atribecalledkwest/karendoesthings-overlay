@@ -17,8 +17,10 @@
 
         let id = 0;
 
+        let sock;
+
         let setup = function() {
-            let sock = new WebSocket(nodecg.bundleConfig.obs.url);
+            sock = new WebSocket(nodecg.bundleConfig.obs.url);
 
             let scene = nodecg.Replicant("obs-scene", { defaultValue: "brb" });
 
@@ -60,6 +62,10 @@
                 }, rate*1000);
             };
         };
+
+        nodecg.listenFor("obs-reconnect", () => {
+            sock.close();
+        });
 
         setup();
     };
