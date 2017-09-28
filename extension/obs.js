@@ -23,7 +23,7 @@
             let scene = nodecg.Replicant("obs-scene", { defaultValue: "brb" });
 
             sock.onopen = function() {
-                nodecg.log.info("Connected to OBS:", nodecg.bundleConfig.obs.url);
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Connected to OBS:", nodecg.bundleConfig.obs.url);
                 rate = minRate;
                 sock.send(JSON.stringify({
                     "request-type": "GetSceneList",
@@ -54,7 +54,7 @@
             };
 
             sock.onclose = function() {
-                nodecg.log.info(`Connection to OBS stopped, retrying in ${rate} seconds...`);
+                if(nodecg.bundleConfig.debug) nodecg.log.info(`Connection to OBS stopped, retrying in ${rate} seconds...`);
                 setTimeout(function() {
                     setup();
                 }, rate*1000);
