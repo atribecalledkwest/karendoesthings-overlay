@@ -49,7 +49,7 @@
             };
 
             sock.onerror = function(e) {
-                nodecg.log.error("OBS error:", e);
+                if(nodecg.bundleConfig.debug) nodecg.log.error("OBS error:", e);
                 rate = Math.min(rate + 2, maxRate);
             };
 
