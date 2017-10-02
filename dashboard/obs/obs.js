@@ -5,7 +5,6 @@ let setup = function setup(argument) {
         status = nodecg.Replicant("obs-connection", { defaultValue: false });
 
     status.on("change", newVal => {
-        console.log(newVal);
         reconnect.disabled = !newVal;
     });
 
