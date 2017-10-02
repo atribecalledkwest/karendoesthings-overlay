@@ -50,6 +50,13 @@
         "width": 3,
         "file": "background/index.html",
         "workspace": "KarenDoesThings"
+      },
+      {
+        "name": "obs",
+        "title": "OBS",
+        "width": 2,
+        "file": "obs/index.html",
+        "workspace": "KarenDoesThings"
       }
     ],
     "graphics": [
