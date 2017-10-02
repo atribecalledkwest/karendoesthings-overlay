@@ -15,15 +15,17 @@
             minRate = 5,
             maxRate = 17;
 
-        let id = 0;
+        let id = 0,
+            sock = null,
+            scene = nodecg.Replicant("obs-scene", { defaultValue: "brb" }),
+            connection = nodecg.Replicant("obs-connection", { defaultValue: false });
 
         let setup = function() {
-            let sock = new WebSocket(nodecg.bundleConfig.obs.url);
-
-            let scene = nodecg.Replicant("obs-scene", { defaultValue: "brb" });
+            sock = new WebSocket(nodecg.bundleConfig.obs.url);
 
             sock.onopen = function() {
                 if(nodecg.bundleConfig.debug) nodecg.log.info("Connected to OBS:", nodecg.bundleConfig.obs.url);
+                connection.value = true;
                 rate = minRate;
                 sock.send(JSON.stringify({
                     "request-type": "GetSceneList",
@@ -31,6 +33,8 @@
                 }));
                 id++;
             };
+
+            sock.onready
 
             sock.onmessage = function(message) {
                 let data = JSON.parse(message.data);
@@ -55,11 +59,21 @@
 
             sock.onclose = function() {
                 if(nodecg.bundleConfig.debug) nodecg.log.info(`Connection to OBS stopped, retrying in ${rate} seconds...`);
+                connection.value = false;
                 setTimeout(function() {
                     setup();
                 }, rate*1000);
             };
         };
+
+        nodecg.listenFor("obs-reconnect", () => {
+            if(sock.readyState === 1) {
+                connection.value = false;
+                sock.onclose = null;
+                sock.close();
+                setup();
+            }
+        });
 
         setup();
     };
