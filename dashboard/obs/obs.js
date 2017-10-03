@@ -4,8 +4,17 @@ let setup = function setup(argument) {
         reconnect = document.querySelector("paper-button#reconnect"),
         status = nodecg.Replicant("obs-connection", { defaultValue: false });
 
+    if(!nodecg.bundleConfig.use.obs) {
+    	reconnect.innerText = "Not connected";
+    	reconnect.disabled = true;
+    }
+
     status.on("change", newVal => {
-        reconnect.disabled = !newVal;
+    	if(newVal) {
+    		reconnect.innerText = "Reconnect";
+    	} else {
+    		reconnect.innerText = "Connecting...";
+    	}
     });
 
     reconnect.onclick = function() {
