@@ -10,7 +10,7 @@ let setup = function setup(argument) {
     }
 
     status.on("change", newVal => {
-    	if(newVal) {
+    	if(!newVal) {
     		reconnect.innerText = "Reconnect";
     	} else {
     		reconnect.innerText = "Connecting...";
