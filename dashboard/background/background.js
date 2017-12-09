@@ -4,6 +4,8 @@
     let layouts = [
         "16x9",
         "4x3",
+        "40x33",
+        "5x3",
         "starting",
         "brb",
         "none",
