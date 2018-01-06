@@ -19,9 +19,10 @@
 
         for(let i = 0; i < arguments.length; i++) {
             let item = arguments[i];
-            let button = document.createElement(`paper-button#layout_${item.name}`);
+            let button = document.createElement("paper-button");
             button.id = `layout_${item.name}`;
-            button.innerText = item.longname
+            button.innerText = item.longname;
+            button.raised = true;
             button.onclick = function() {
                 scene.value = item.name;
                 nodecg.sendMessage("obs-scenechange", item.name);
