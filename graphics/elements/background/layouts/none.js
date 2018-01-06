@@ -15,6 +15,7 @@ define([], function() {
             }));
             return "detached";
         },
-        name: "none"
+        name: "none",
+        longname: "Blank Screen"
     };
 });

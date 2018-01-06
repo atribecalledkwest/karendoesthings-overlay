@@ -3,7 +3,7 @@ define([], function() {
     return {
         attach(self) {
             self.tl.add(function() {
-                self.$.plate.style.backgroundImage = "url(img/masked/bg-5x3.png)";
+                self.$.plate.style.backgroundImage = "url(img/masked/bg-kc.png)";
             }).add(TweenMax.to({}, 0.35, {})).add(TweenMax.to(self.$.placeholder, 0.75, {
                 opacity: 0
             }));
@@ -15,7 +15,7 @@ define([], function() {
             }));
             return "detached";
         },
-        name: "5x3",
-        longname: "5x3"
+        name: "kc",
+        longname: "Kantai Collection"
     };
 });

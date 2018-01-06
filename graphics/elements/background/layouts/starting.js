@@ -27,6 +27,7 @@ define([], function() {
             }));
             return "detached";
         },
-        name: "starting"
+        name: "starting",
+        longname: "Starting Soon!"
     };
 });

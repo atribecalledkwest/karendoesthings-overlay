@@ -6,6 +6,7 @@
         "layouts/4x3",
         "layouts/40x33",
         "layouts/5x3",
+        "layouts/kc",
         "layouts/starting",
         "layouts/brb",
         "layouts/none",

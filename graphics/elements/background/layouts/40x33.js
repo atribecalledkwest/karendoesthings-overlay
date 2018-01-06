@@ -15,6 +15,7 @@ define([], function() {
             }));
             return "detached";
         },
-        name: "40x33"
+        name: "40x33",
+        longname: "40x33 (Melee)"
     };
 });

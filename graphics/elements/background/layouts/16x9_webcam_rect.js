@@ -15,6 +15,7 @@ define([], function() {
             }));
             return "detached";
         },
-        name: "16x9_webcam_rect"
+        name: "16x9_webcam_rect",
+        longname: "16x9 (16x9 Webcam)"
     };
 });

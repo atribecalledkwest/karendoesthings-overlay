@@ -15,6 +15,7 @@ define([], function() {
             }));
             return "detached";
         },
-        name: "4x3_webcam"
+        name: "4x3_webcam",
+        longname: "4x3 (Webcam)"
     };
 });

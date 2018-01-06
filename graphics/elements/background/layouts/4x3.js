@@ -15,6 +15,7 @@ define([], function() {
             }));
             return "detached";
         },
-        name: "4x3"
+        name: "4x3",
+        longname: "4x3"
     };
 });

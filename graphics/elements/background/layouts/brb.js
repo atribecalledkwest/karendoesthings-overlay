@@ -27,6 +27,7 @@ define([], function() {
             }));
             return "detached";
         },
-        name: "brb"
+        name: "brb",
+        longname: "BRB Screen"
     };
 });
