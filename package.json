@@ -66,6 +66,12 @@
         "height": 720
       }
     ],
+    "mount": [
+        {
+            "directory": "bower_components",
+            "endpoint": "components"
+        }
+    ],
     "soundCues": [
       {
         "name": "slide",
