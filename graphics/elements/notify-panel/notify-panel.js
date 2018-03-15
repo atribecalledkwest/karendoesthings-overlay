@@ -90,7 +90,7 @@
             nodecg.listenFor("donation", "nodecg-streamlabs", function(content) {
                 if(nodecg.bundleConfig.debug) nodecg.log.info("Got dontion:", content.name, content.formatted_amount);
                 self.popup("donation", content.name, content.formatted_amount);
-            }); 
+            });
         },
         popup: function popup(type, user, amount) {
             let self = this;
@@ -151,7 +151,7 @@
                         nodecg.playSound("slide");
                     }
                 },
-                top: "-100px",
+                top: "-150px",
                 ease: Power1.easeInOut
             })).add(TweenMax.to({}, 1.5, {}));
             return this;

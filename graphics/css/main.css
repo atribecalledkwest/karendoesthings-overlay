@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,400,700&subset=latin-ext');
 @import url('./colors.css');
 
+:root {
+    --document-width: 1920px;
+    --document-height: 1080px;
+    --font-size: 153px;
+    --overlay-text-size: 75px;
+}
+
 body {
     padding: 0px;
     margin: 0px;
@@ -8,12 +15,12 @@ body {
 }
 
 #container {
-    width: 1280px;
-    min-width: 1280px;
-    max-width: 1280px;
-    height: 720px;
-    min-height: 720px;
-    max-width: 720px;
+    width: var(--document-width);
+    min-width: var(--document-width);
+    max-width: var(--document-width);
+    height: var(--document-height);
+    min-height: var(--document-height);
+    max-width: var(--document-height);
     font-family: 'Oswald', 'Helvetica', sans-serif;
     font-weight: bold;
 }

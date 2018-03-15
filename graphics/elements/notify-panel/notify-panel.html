@@ -5,18 +5,26 @@
                 position: absolute;
                 display: block;
             }
+            :root {
+                --notify-panel-width: 1275px;
+                --notify-panel-height: 150px;
+            };
             #panel {
+                display: inline-block;
                 z-index: 4;
                 position: absolute;
-                top: -100px;
+                top: -150px;
                 -webkit-box-align: center;
-                left: 230px;
-                width: 800px;
-                height: 100px;
+                margin-left: 50%;
+                margin-right: 50%;
+                left: calc(var(--document-width) / 2 - var(--notify-panel-width) / 2);
+                vertical-align: middle;
+                width: var(--notify-panel-width);
+                height: var(--notify-panel-height);
                 background: url(img/notify-panel.png);
-                line-height: 80px;
+                line-height: 120px;
                 text-align: center;
-                font-size: 46px;
+                font-size: 69px; /* nice */
                 color: #dee3e7;
                 font-weight: bold;
                 text-shadow: 0px 0px 8px rgba(10, 10, 10, 0.6);

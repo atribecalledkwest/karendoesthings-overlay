@@ -1,8 +1,8 @@
 :root {
-    --kdt-text: #dee3e7;
-    --kdt-text-border: #6495ED;
-    --kdt-blue-light-1: #3a5cc2;
-    --kdt-blue-light-2: #6fbaf4;
-    --kdt-blue-dark-1: #2540a2;
-    --kdt-blue-dark-2: #4b92d0;
+    /* This is used for our branding text and any text that might be placed in the background-layer text */
+    --kdt-text: #ffecff;
+    --kdt-text-border: #e15e87;
+    /* These two colors are the light and dark colors we use throughout the project, for the background, notify panel, and now playing elements*/
+    --kdt-light: #f397b4;
+    --kdt-dark: #d4688a;
 }

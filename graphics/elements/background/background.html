@@ -9,30 +9,27 @@
             .background {
                 position: static;
                 z-index: -11;
-                width: 1280px;
-                height: 720px;
+                width: var(--document-width);
+                height: var(--document-height);
                 margin: 0px;
                 overflow: hidden;
-                /*background-image: url(../../img/bg-wide2.png);*/
-                /* Turning this off for now because it's just not working out super well + masks performance-wise
-                animation:100s scroll infinite linear;
+                background-image: url(../../img/bg.png);
                 -webkit-mask-image: none;
-                */
             }
             div.textholder {
                 position: absolute;
                 top: 0px;
-                width: 1280px;
-                height: 720px;
+                width: var(--document-width);
+                height: var(--document-height);
             }
             span.text, span.border {
                 color: var(--kdt-text);
-                font-size: 102px;
-                width: 1280px;
-                height: 720px;
+                font-size: var(--font-size);
+                width: var(--document-width);
+                height: var(--document-height);
 
                 position: absolute;
-                top: 285px;
+                top: calc(var(--document-height) / 2 - var(--font-size));
                 text-align: center;
                 /*position: relative;/**/
             }
@@ -40,8 +37,8 @@
                 z-index: -8;
             }
             span.border {
-                -webkit-text-stroke: 16px var(--kdt-text-border);
-                text-shadow: 0px 0px 25px rgba(30, 30, 30, 1);
+                -webkit-text-stroke: 25px var(--kdt-text-border);
+                text-shadow: 0px 0px 37.5px rgba(30, 30, 30, 1);
                 z-index: -9;
             }
             #plate {
