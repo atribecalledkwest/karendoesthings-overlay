@@ -9,8 +9,6 @@
         enableNowPlaying = newVal;
     });
 
-    let panel = document.querySelector("now-playing");
-
     Polymer({
         is: "now-playing",
         properties: {
@@ -32,6 +30,7 @@
             }
         },
         ready: function ready() {
+            let self = this;
             this.tl.add([
                 TweenMax.to(this.$.toppart, 0.01, {
                     x: "-100%",
@@ -42,6 +41,9 @@
                     opacity: 0
                 }),
             ]);
+            nodecg.listenFor("nowplaying", function(track) {
+                self.popup(track.artist, track.song);
+            });
         },
         popup: function popup(artist, song) {
             if(!enableNowPlaying) return;
@@ -100,9 +102,5 @@
             this.tl.add(TweenMax.to({}, 1, {}));
             return this;
         }
-    });
-
-    nodecg.listenFor("nowplaying", function(track) {
-        panel.popup(track.artist, track.song);
     });
 })();
