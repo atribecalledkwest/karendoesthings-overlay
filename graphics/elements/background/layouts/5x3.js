@@ -3,7 +3,7 @@ define([], function() {
     return {
         attach(self) {
             self.tl.add(function() {
-                self.$.plate.style.backgroundImage = "url(img/masked/bg-5x3.png)";
+                self.$.plate.style.webkitMaskImage = "url(img/masks/mask-5x3.png)";
             }).add(TweenMax.to({}, 0.35, {})).add(TweenMax.to(self.$.placeholder, 0.75, {
                 opacity: 0
             }));

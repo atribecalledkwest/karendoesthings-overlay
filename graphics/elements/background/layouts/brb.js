@@ -3,7 +3,7 @@ define([], function() {
     return {
         attach(self) {
             self.tl.add(function() {
-                self.$.plate.style.backgroundImage = "url(img/masked/bg-none.png)";
+                self.$.plate.style.webkitMaskImage = "none";
                 let text = document.createElement("span"),
                     border = document.createElement("span");
                 text.className = "text";
