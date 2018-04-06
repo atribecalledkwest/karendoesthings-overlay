@@ -1,6 +1,6 @@
 {
   "name": "karendoesthings-overlay",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The new overlay for my stream",
   "homepage": "",
   "author": {
@@ -67,10 +67,10 @@
       }
     ],
     "mount": [
-        {
-            "directory": "bower_components",
-            "endpoint": "components"
-        }
+      {
+        "directory": "bower_components",
+        "endpoint": "components"
+      }
     ],
     "soundCues": [
       {
