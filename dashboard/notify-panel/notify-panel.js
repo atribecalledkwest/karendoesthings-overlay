@@ -26,7 +26,8 @@ let setup = function setup() {
         testbits = document.querySelector("paper-button#bits"),
         testdonations = document.querySelector("paper-button#donation"),
         testsubscription = document.querySelector("paper-button#subscription"),
-        testhost = document.querySelector("paper-button#host");
+        testhost = document.querySelector("paper-button#host"),
+        testraid = document.querySelector("paper-button#raid");
     testfollow.onclick = function() {
         nodecg.sendMessageToBundle("twitch-follow", "nodecg-streamlabs", {
             name: "KarenDoesThings"
@@ -53,6 +54,12 @@ let setup = function setup() {
     testhost.onclick = function() {
         nodecg.sendMessageToBundle("twitch-host", "nodecg-streamlabs", {
             name: "mang0",
+            viewers: Math.ceil(Math.random()*100)
+        });
+    };
+    testraid.onclick = function() {
+        nodecg.sendMessageToBundle("twitch-raid", "nodecg-streamlabs", {
+            name: "Tienn",
             viewers: Math.ceil(Math.random()*100)
         });
     };
