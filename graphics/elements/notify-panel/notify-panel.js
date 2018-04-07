@@ -89,7 +89,7 @@
             if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up raid listener");
             nodecg.listenFor("twitch-raid", "nodecg-streamlabs", function(content) {
                 if(nodecg.bundleConfig.debug) nodecg.log.info("Got raid:", content.name, content.viewers);
-                self.popup()
+                self.popup("raid", content.name, content.viewers);
             });
 
             if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up donation listener");
