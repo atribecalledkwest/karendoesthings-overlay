@@ -86,6 +86,12 @@
                 self.popup("host", content.name, content.viewers);
             });
 
+            if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up raid listener");
+            nodecg.listenFor("twitch-raid", "nodecg-streamlabs", function(content) {
+                if(nodecg.bundleConfig.debug) nodecg.log.info("Got raid:", content.name, content.viewers);
+                self.popup()
+            });
+
             if(nodecg.bundleConfig.debug) nodecg.log.info("Setting up donation listener");
             nodecg.listenFor("donation", "nodecg-streamlabs", function(content) {
                 if(nodecg.bundleConfig.debug) nodecg.log.info("Got dontion:", content.name, content.formatted_amount);
@@ -124,6 +130,8 @@
                         }
                     } else if(type === "host") {
                         text = amount + " viewer host!";
+                    } else if(type === "raid") {
+                        text = amount + " viewer raid!";
                     }
                     self.$.paneltext.innerText = text;
                 }

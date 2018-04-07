@@ -6,7 +6,8 @@ const type_replicants = {
     "bits": "bit-toggle",
     "donation": "donation-toggle",
     "subscription": "subscription-toggle",
-    "host": "host-toggle"
+    "host": "host-toggle",
+    "raid": "raid-toggle"
 };
 
 const type_sound_replicants = {
@@ -14,6 +15,7 @@ const type_sound_replicants = {
     "bits": "bit-sound-toggle",
     "donation": "donation-sound-toggle",
     "subscription": "subscription-sound-toggle",
-    "host": "host-sound-toggle"
+    "host": "host-sound-toggle",
+    "raid": "raid-sound-toggle"
 };
 /* eslint-enable no-unused-vars */
