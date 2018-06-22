@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overlay Text</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="import" href="../components/polymer/polymer.html" />
+    <script type="text/javascript" src="../components/gsap/src/minified/TweenMax.min.js"></script>
+    <style type="text/css">
+        body {
+            width: 1920px;
+            height: 1080px;
+        }
+    </style>
+</head>
+<body>
+
 <dom-module id="overlay-text">
     <template>
         <style>
@@ -7,7 +23,7 @@
             }
             .overlay-text {
                 font-size: 75px;
-                color: var(--kdt-text);
+                color: #ffecff;
                 font-weight: bold;
                 padding: 0px;
             }
@@ -15,7 +31,7 @@
                 z-index: 2;
             }
             #overlayBorder {
-                -webkit-text-stroke: 12px 75px;
+                -webkit-text-stroke: 12px #e15e87;
                 z-index: 1;
                 text-shadow: 0px 0px 23px rgba(30, 30, 30, 1);
             }
@@ -32,4 +48,9 @@
     </template>
 </dom-module>
 
-<script type="text/javascript" src="overlay-text.js"></script>
+<script type="text/javascript" src="js/overlay-text.js"></script>
+
+<overlay-text></overlay-text>
+
+</body>
+</html>

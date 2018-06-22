@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notify Panel</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="import" href="../components/polymer/polymer.html" />
+    <script type="text/javascript" src="../components/gsap/src/minified/TweenMax.min.js"></script>
+    <style type="text/css">
+        body {
+            width: 1275px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+
+<dom-module id="notify-panel">
+    <template>
+        <style>
+            :host {
+                position: absolute;
+                display: block;
+            }
+            :root {
+                --notify-panel-width: 1275px;
+                --notify-panel-height: 150px;
+            };
+            #panel {
+                display: inline-block;
+                z-index: 4;
+                position: absolute;
+                top: -150px;
+                -webkit-box-align: center;
+                margin-left: 50%;
+                margin-right: 50%;
+                left: calc(var(--document-width) / 2 - var(--notify-panel-width) / 2);
+                vertical-align: middle;
+                width: var(--notify-panel-width);
+                height: var(--notify-panel-height);
+                background: url(img/notify-panel.png);
+                line-height: 120px;
+                text-align: center;
+                font-size: 69px; /* nice */
+                color: #dee3e7;
+                font-weight: bold;
+                text-shadow: 0px 0px 8px rgba(10, 10, 10, 0.6);
+            }
+        </style>
+        <div id="panel">
+            <span id="paneltext">{{ text }}</span>
+        </div>
+    </template>
+</dom-module>
+
+<script type="text/javascript" src="js/globals.js"></script>
+<script type="text/javascript" src="js/notify-panel.js"></script>
+
+<notify-panel></notify-panel>
+
+</body>
+</html>

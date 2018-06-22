@@ -61,7 +61,17 @@
     ],
     "graphics": [
       {
-        "file": "index.html",
+        "file": "now-playing.html",
+        "width": 1920,
+        "height": 123
+      },
+      {
+        "file": "notify-panel.html",
+        "width": 1275,
+        "height": 150
+      },
+      {
+        "file": "overlay-text.html",
         "width": 1920,
         "height": 1080
       }

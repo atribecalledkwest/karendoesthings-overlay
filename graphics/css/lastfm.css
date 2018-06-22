@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,700&subset=latin-ext');
+@import url('./colors.css');
+
+body {
+    width: 1920px;
+height: 1080px;
+}
