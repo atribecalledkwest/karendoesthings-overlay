@@ -9,9 +9,7 @@
     "url": "atribecalledkwest.github.io"
   },
   "dependencies": {
-    "express": "^4.13.3",
     "lastfm": "atribecalledkwest/lastfm-node",
-    "socket.io-client": "^2.0.3",
     "ws": "^3.1.0"
   },
   "scripts": {
@@ -42,20 +40,6 @@
         "title": "LastFM Now Playing",
         "width": 3,
         "file": "lastfm-np/index.html",
-        "workspace": "KarenDoesThings"
-      },
-      {
-        "name": "background",
-        "title": "Scene",
-        "width": 3,
-        "file": "background/index.html",
-        "workspace": "KarenDoesThings"
-      },
-      {
-        "name": "obs",
-        "title": "OBS",
-        "width": 2,
-        "file": "obs/index.html",
         "workspace": "KarenDoesThings"
       }
     ],
