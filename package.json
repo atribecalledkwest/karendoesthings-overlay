@@ -1,6 +1,6 @@
 {
   "name": "karendoesthings-overlay",
-  "version": "0.2.3",
+  "version": "0.3",
   "description": "The new overlay for my stream",
   "homepage": "",
   "author": {
@@ -9,9 +9,7 @@
     "url": "atribecalledkwest.github.io"
   },
   "dependencies": {
-    "express": "^4.13.3",
     "lastfm": "atribecalledkwest/lastfm-node",
-    "socket.io-client": "^2.0.3",
     "ws": "^3.1.0"
   },
   "scripts": {
@@ -43,25 +41,21 @@
         "width": 3,
         "file": "lastfm-np/index.html",
         "workspace": "KarenDoesThings"
-      },
-      {
-        "name": "background",
-        "title": "Scene",
-        "width": 3,
-        "file": "background/index.html",
-        "workspace": "KarenDoesThings"
-      },
-      {
-        "name": "obs",
-        "title": "OBS",
-        "width": 2,
-        "file": "obs/index.html",
-        "workspace": "KarenDoesThings"
       }
     ],
     "graphics": [
       {
-        "file": "index.html",
+        "file": "now-playing.html",
+        "width": 1920,
+        "height": 123
+      },
+      {
+        "file": "notify-panel.html",
+        "width": 1275,
+        "height": 150
+      },
+      {
+        "file": "overlay-text.html",
         "width": 1920,
         "height": 1080
       }

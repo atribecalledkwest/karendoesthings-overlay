@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LastFM</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="import" href="../components/polymer/polymer.html" />
+    <script type="text/javascript" src="../components/gsap/src/minified/TweenMax.min.js"></script>
+    <style type="text/css">
+        body {
+            width: 1920px;
+            height: 123px;
+        }
+    </style>
+</head>
+<body>
+
 <dom-module id="now-playing">
     <template>
         <style type="text/css">
@@ -5,11 +21,6 @@
                 position: absolute;
                 display: block;
              };
-             div#nowplayingblock {
-                 position: relative;
-                 top: 180px;
-                 z-index: 4;
-             }
              div#toppart, div#bottompart {
                  display: block;
                  padding: 6px 11px 11px 11px;
@@ -34,4 +45,8 @@
     </template>
 </dom-module>
 
-<script type="text/javascript" src="now-playing.js"></script>
+<script type="text/javascript" src="js/now-playing.js"></script>
+
+<now-playing></now-playing>
+</body>
+</html>
