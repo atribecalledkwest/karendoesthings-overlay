@@ -13,13 +13,9 @@
 				"lastfm": {
 					"type": "boolean",
 					"default": false
-				},
-				"obs": {
-					"type": "boolean",
-					"default": false
 				}
 			},
-			"required": ["lastfm", "obs"]
+			"required": ["lastfm"]
 		},
 		"lastfm": {
 			"type": "object",
@@ -38,16 +34,6 @@
 				}
 			},
 			"required": ["apikey", "sharedsecret", "target"]
-		},
-		"obs": {
-			"type": "object",
-			"properties": {
-				"url": {
-					"type": "string",
-					"default": "ws://localhost:4444"
-				}
-			},
-			"required": ["url"]
 		}
 	}
 }
