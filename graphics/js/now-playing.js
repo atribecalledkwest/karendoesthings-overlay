@@ -74,7 +74,11 @@
             }), "-=0.4");
 
             // Wait
-            this.tl.add(TweenMax.to({}, 5.5, {}));
+            if(!nodecg.bundleConfig.lastfm.hasOwnProperty("wait") || typeof nodecg.bundleConfig.lastfm.wait !== "number"){
+                this.tl.add(TweenMax.to({}, 5.5, {}));
+            } else {
+                this.tl.add(TweenMax.to({}, nodecg.bundleConfig.lastfm.wait, {}));
+            }
 
             // Slide out
             this.tl.add(TweenMax.to(this.$.bottompart, 1.15, {

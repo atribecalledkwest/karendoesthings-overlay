@@ -31,7 +31,11 @@
 				"target": {
 					"type": "string",
 					"default": "targetlastfmaccount"
-				}
+				},
+                "wait": {
+                    "type": "number",
+                    "default": 5.5
+                }
 			},
 			"required": ["apikey", "sharedsecret", "target"]
 		}
