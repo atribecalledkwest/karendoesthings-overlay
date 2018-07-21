@@ -19,7 +19,7 @@
     "bundleDependencies": {
       "nodecg-streamlabs": "^v0.1.4"
     },
-    "compatibleRange": ">0.9",
+    "compatibleRange": ">1.1.0",
     "dashboardPanels": [
       {
         "name": "notify-panel",
