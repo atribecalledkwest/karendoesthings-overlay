@@ -41,8 +41,17 @@
                     opacity: 0
                 }),
             ]);
+            let song = nodecg.Replicant("nowplaying");
+            song.on("change", function(newVal, oldVal) {
+                self.song = newVal.song;
+                self.artist = newVal.artist;
+            });
             nodecg.listenFor("nowplaying", function(track) {
-                self.popup(track.artist, track.song);
+                if(track) {
+                    self.popup(track.artist, track.song);
+                } else {
+                    self.popup(self.artist, self.song);
+                }
             });
         },
         popup: function popup(artist, song) {
